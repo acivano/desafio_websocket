@@ -1,0 +1,28 @@
+<div>
+    <h2 style="color:hsl(348, 83%, 47%);">Productos - hbs</h2>
+
+    <div id ="tabla">
+    {{#if productos }}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center align-middle">Titulo</th>
+                    <th scope="col" class="text-center align-middle">Precio</th>
+                    <th scope="col" class="text-center align-middle">url</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{!-- {{#each productos}}
+                <tr>
+                    <td class="text-center align-middle">{{Titulo}}</td>
+                    <td class="text-center align-middle">{{Precio}}</td>
+                    <td class="text-center align-middle"> <img src="{{url}}" class="mh-25" alt="Producto {{Titulo}}"></td>
+                </tr>
+                {{/each}} --}}
+            </tbody>
+        </table>
+    {{else}}
+        <h3 class="alert alert-danger">No se encontraron datos</h3>
+    {{/if}}
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="pb-5 border-bottom">
+    <h2>Nuevo producto - hbs</h2>
+    <form onsubmit="return addProduct()">
+        <input type="text" class="form-control mb-2" placeholder="Titulo" name="Titulo" id="Titulo" required>
+        <input type="number" name="Precio" class="form-control mb-2"  placeholder="Precio" id="Precio" required>
+        <input type="text" name="url" class="form-control mb-2"  placeholder="url" id="url" required>
+        <button class="btn btn-primary btn-lg active mt-3">Enviar</button>
+        
+    </form >
+</div>
+
+<div class="mt-5 pb-5 border-bottom">
+    {{> historial }}
+</div>
+<div class="mt-5 pb-5 border-bottom">
+    {{> chat }}
+</div>
+
+
+

@@ -1,0 +1,14 @@
+<div>
+    <h2 style="color:hsl(348, 83%, 47%);">Centro de Mensajes</h2>
+    <div class="d-flex justify-content-between">
+        
+        <form onsubmit="return addMessage()">
+            <input type="text" id="email" class="form-control mb-2" placeholder="Email" required>
+            <textarea type="textarea" id="text" class="form-control " placeholder="Mensaje" required></textarea>
+            <input type="submit" class="btn btn-primary my-2" value="Enviar">
+        </form>
+        <div id="messages" class="mw-100"></div>
+    </div>
+</div>
+
+
