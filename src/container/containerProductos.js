@@ -6,7 +6,6 @@ class ContainterProductos {
 
     save(producto){
         try {
-            console.log(producto)
             producto.id = this.productos.length + 1
             this.productos.push(producto)
             

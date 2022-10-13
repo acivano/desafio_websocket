@@ -8,7 +8,6 @@ class ContainterMensaje {
 
     async save(mensaje){
         try {
-            console.log('guarda mensaje')
             let mensajes = await this.getAll()
             await mensajes.push(mensaje)
             await fs.promises.writeFile(this.file, JSON.stringify(mensajes, null, 2))
