@@ -1,30 +1,33 @@
+const ClienteProductoSql = require('../../mariaDBScript.js')
+
+const { options } = require('../../options/mariaDB.js')
+
 class ContainterProductos {
 
     constructor(){
-        this.productos = []
+        this.sql = new ClienteProductoSql(options)
+        this.sql.crearTabla()
     }
 
-    save(producto){
+    async save(producto){
         try {
-            producto.id = this.productos.length + 1
-            this.productos.push(producto)
-            
-            return producto
+            return await this.sql.insertarProductos(producto)
         } catch(error){
             return error
         }
     }
 
-    getAll(){
-        return this.productos
+    async getAll(){
+        let productos = await this.sql.listarProductos()
+        
+        return (productos)
     }
 
-    getById(id){
+    async getById(id){
         try {
-            let producto
-            let pos = id -1 
-            if (pos <= this.productos.length && this.productos.length > 0 && this.productos[pos] != null){
-                producto = this.productos[pos]
+            let producto = await this.sql.insertarProductoById(id)
+            if (producto){
+                return producto
             }else{
                 producto = { error : 'Producto no encontrado' }
             }
@@ -34,7 +37,7 @@ class ContainterProductos {
         }
     }
 
-    modifById(id, producto){
+    async modifById(id, producto){
         try {
             let pos = id -1 
             if (pos <= this.productos.length && this.productos.length > 0){
@@ -46,7 +49,7 @@ class ContainterProductos {
         } 
     }
 
-    deleteById(id){
+    async deleteById(id){
         try {
             let pos = id -1 
             if (pos <= this.productos.length && this.productos.length > 0){
