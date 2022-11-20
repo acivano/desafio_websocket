@@ -24,8 +24,13 @@ function render(data){
 
 }
 
-function renderProductos(data){
+async function renderProductos(/*data*/){
 
+    const prod = await fetch('http://localhost:8080/api/productos-test');
+
+    const data = await prod.json();
+
+    console.log(data)
     if (data.length == 0) {
         let html = `<h3 class="alert alert-danger">No se encontraron datos</h3>`
         document.getElementById('tabla').innerHTML = html
@@ -68,7 +73,7 @@ function addMessage(){
         datetime : new Date().toLocaleString(),
         text : document.getElementById('text').value,
     }
-
+    console.log(mensaje)
     socket.emit('new-message', mensaje)
     document.getElementById('text').value = ''
     document.getElementById('text').focus()
@@ -77,16 +82,16 @@ function addMessage(){
 }
 
 function addProduct(){
-    let productoNuevo = {
-        Titulo : document.getElementById('Titulo').value,
-        Precio : document.getElementById('Precio').value,
-        url : document.getElementById('url').value
-    }
+    // let productoNuevo = {
+    //     Titulo : document.getElementById('Titulo').value,
+    //     Precio : document.getElementById('Precio').value,
+    //     url : document.getElementById('url').value
+    // }
 
-    socket.emit('new-product', productoNuevo)
-    document.getElementById('Titulo').value =''
-    document.getElementById('Precio').value = null
-    document.getElementById('url').value = ''
+    //socket.emit('new-product', productoNuevo)
+    // document.getElementById('Titulo').value =''
+    // document.getElementById('Precio').value = null
+    // document.getElementById('url').value = ''
 
     return false
 }
